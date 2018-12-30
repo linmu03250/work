@@ -10,5 +10,7 @@ fi
 stream_id=$1
 local_file="mtz1${stream_id}.m3u8"
 remote_file="mtz1.mt-meipai.${stream_id}/mtz1${stream_id}.m3u8"
+./mtshell_linux delete fragments ${remote_file}  http://up.bx.m.com
 ./mtshell_linux rput fragments ${remote_file} ${local_file} true http://up.bx.m.com
-curl http://cdn.ops.m.com/?target=http://fragments.zone1.meitudata.com/${remote_file}
+curl "http://cdn.ops.m.com/?target=http://fragments.zone1.meitudata.com/${remote_file}?start=-1&end=-1"
+curl "http://cdn.ops.m.com/?target=http://fragments.zone1.meitudata.com/${remote_file}"
